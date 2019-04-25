@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Switch, Text, Vibration, View } from 'react-native';
 import { BackButton, PauseButton, PlayButton } from './Buttons';
-import {statusBarHeight} from './Constants'
+import {statusBarHeight} from './Constants';
+
 
 export class Conteo extends React.Component {
     constructor() {
@@ -31,19 +32,17 @@ export class Conteo extends React.Component {
             this.Pause()
             Vibration.vibrate(10000)
         }
+        this.setState({active: true})
     }
     Start() {
-        this.Pause()
         this.interval = setInterval(this.Conteo, 1000)
-    }
-    componentDidMount() {
-        this.Start()   
     }
     componentWillUnmount(){
         this.Pause()
     }
     Pause() {
         clearInterval(this.interval)
+        this.setState({ active: false })
     }
 
     Replay() {
@@ -63,16 +62,14 @@ export class Conteo extends React.Component {
         } else {
             sec = sec
         }
-
         return (
             <View style={style.container}>
                 <Text style={style.number}>{min}:{sec}</Text>
-                <View style={style.number}>
-                    <Switch style={style.number} value={this.state.switch} onValueChange={() => this.CheckUnCheck()} />
+                <View style={style.buttons}>
+                    <Switch value={this.state.switch} onValueChange={() => this.CheckUnCheck()} />
                 </View>
                 <View style={style.buttons}>
-                    <PauseButton onPause={() => this.Pause()} />
-                    <PlayButton onPlay={() => this.Start()} />
+                    {this.state.active ? <PauseButton onPause={() => this.Pause()} /> :  <PlayButton onPlay={() => this.Start()} />}
                     <BackButton onBack={() => this.Replay()} />
                 </View>
             </View>
@@ -91,7 +88,7 @@ const style = StyleSheet.create({
     number: {
         justifyContent: "center",
         textAlign: "center",
-        fontSize: 50
+        fontSize: 50,
     },
     buttons: {
         flexDirection: 'row',

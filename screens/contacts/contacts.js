@@ -17,7 +17,7 @@ const Contact = props => (
     </View>
 )
 
-export class Contacts extends React.Component {
+export default class Contacts extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
             title: 'Contacts',
