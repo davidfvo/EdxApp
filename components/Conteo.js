@@ -10,7 +10,9 @@ export class Conteo extends React.Component {
         this.state = {
             choice: 1500,
             switch: false,
-            active: false
+            active: false,
+            minutos: false,
+            segundos: false
         }
     }
     ToggleCheck = () => {
@@ -31,14 +33,18 @@ export class Conteo extends React.Component {
         if (this.state.choice == 0) {
             this.Pause()
             Vibration.vibrate(10000)
-        }
-        this.setState({active: true})
+        } 
     }
     Start() {
+        this.setState({ active: true })
+        this.setState(prevState => ({ choice: prevState.choice - 1 }))
         this.interval = setInterval(this.Conteo, 1000)
     }
     componentWillUnmount(){
         this.Pause()
+    }
+    componentDidUpdate(){
+        this._round()
     }
     Pause() {
         clearInterval(this.interval)
@@ -52,8 +58,8 @@ export class Conteo extends React.Component {
             this.setState({ choice: 300 })
         }
     }
-
-    render() {
+    _round() {
+        const {minutos, segundos} = this.state
         let x = this.state.choice
         let min = Math.floor(x / 60)
         let sec = Math.round((((x / 60) - min) * 60), 0)
@@ -62,9 +68,18 @@ export class Conteo extends React.Component {
         } else {
             sec = sec
         }
+        if (min !== minutos) {
+            this.setState({ minutos: min })
+        }
+        if (sec !== segundos) {
+            this.setState({ segundos: sec })
+        }
+    }
+
+    render() {
         return (
             <View style={style.container}>
-                <Text style={style.number}>{min}:{sec}</Text>
+                <Text style={style.number}>{this.state.minutos ? this.state.minutos : '25'}:{this.state.segundos ? this.state.segundos : '00'}</Text>
                 <View style={style.buttons}>
                     <Switch value={this.state.switch} onValueChange={() => this.CheckUnCheck()} />
                 </View>

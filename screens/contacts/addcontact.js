@@ -9,24 +9,34 @@ export default class AddContact extends React.Component {
     constructor() {
         super()
         this.state = {
-            nombre: '',
-            telefono: '',
-            password: ''
+            fullName: '',
+            phone: '',
+            password: '',
+            key: 2,
         }
+    }
+    submitForm() {
+        this.setState(prevState => ({key:prevState.key + 1}))
+    }
+    getHandler = key => val => {
+        this.setState({[key]:val})
     }
     render() {
         return (
             <View style={style.container}>
                 <TextInput
                     placeholder="Nombre contacto"
+                    onChange={() => this.getHandler('fullName')}
                 />
                 <TextInput
                     placeholder="Telefono"
+                    onChange={() => this.getHandler('Phone')}
                 />
                 <TextInput
                     placeholder="Password"
+                    onChange={() => this.getHandler('password')}
                 />
-                <Button title='Add Contact' />
+                <Button title='Add Contact' onPress={() => this.submitForm()} />
             </View>
         )
     }
