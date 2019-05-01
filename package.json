@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "devtools": "react-devtools",
+    "android": "react-native run-android",
+    "build": "react-native run-android --variant=release"
   },
   "dependencies": {
     "react": "16.8.3",

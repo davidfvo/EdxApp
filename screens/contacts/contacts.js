@@ -38,13 +38,19 @@ export default class Contacts extends React.Component {
     }
 
     componentDidMount() {
-        this.getUsers()
+        // this.getUsers()
+        this._localJson();
     }
 
-    getUsers = async () => {
-        const results = await randomContacts()
-        this.setState({ contacts: results})
+    _localJson() {
+        const results = randomContacts();
+        this.setState({ contacts: results })
     }
+
+    // getUsers = async () => {
+    //     const results = await randomContacts()
+    //     this.setState({ contacts: results})
+    // }
 
     // addContact = newContact => {
     //     this.setState(prevState => ({
