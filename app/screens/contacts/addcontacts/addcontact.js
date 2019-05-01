@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, TextInput } from 'react-native';
-import { style } from '../../components/Stylesheet';
+import { style } from '../../../components/Stylesheet';
 
 export default class AddContact extends React.Component {
     static navigationOptions = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, TextInput, View } from 'react-native';
-import { style } from '../components/Stylesheet';
-import { buttonColor } from '../components/Constants';
+import { style } from '../../components/Stylesheet';
+import { buttonColor } from '../../components/Constants';
 
 //Anadir una validacion de los contactos que pueden entrar
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Text, View } from 'react-native';
 import { style } from '../../components/Stylesheet';
-import { randomContacts } from './apitransform';
-import { FlatListContacts } from './flatlist';
+import { randomContacts } from './components/apitransform';
+import { FlatListContacts } from './components/flatlist';
 
 
 //anadir pantalla para ver info del contacto

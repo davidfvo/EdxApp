@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppContainer } from './screens/navigation';
+import { AppContainer } from './navigation/navigation';
 
 export default class App extends React.Component {
   state = {

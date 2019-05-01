@@ -1,11 +1,11 @@
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import { createAppContainer, createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation';
-import AppScreen from './appscreen';
-import AddContact from './contacts/addcontact';
-import Contacts from './contacts/contacts';
-import Login from './login';
-import Calculadora from './calculadora';
+import AppScreen from '../screens/pomodoro/appscreen';
+import AddContact from '../screens/contacts/addcontacts/addcontact';
+import Contacts from '../screens/contacts/contacts';
+import Login from '../screens/login/login';
+import Calculadora from '../screens/calculator/calculadora';
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
