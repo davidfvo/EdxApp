@@ -26,9 +26,10 @@ export default class Login extends React.Component {
                     secureTextEntry={true}
                 />
                 <Button 
-                title='Press to log In' 
-                onPress={() => { this.props.navigation.navigate("App")}}
-                color={buttonColor}/>
+                    title='Press to log In' 
+                    onPress={() => {this.props.navigation.navigate("App")}}
+                    color={buttonColor}
+                />
             </View>
         );
     }

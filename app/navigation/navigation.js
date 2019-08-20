@@ -53,8 +53,9 @@ const MainTabs = createBottomTabNavigator(
 const SwitchNavigator = createSwitchNavigator({
     Login: Login,
     BottomTabs: MainTabs,
-}, {
+    }, {
         initialRouteName: 'Login'
-    });
+    }
+);
 
 export const AppContainer = createAppContainer(SwitchNavigator);
